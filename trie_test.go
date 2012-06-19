@@ -254,6 +254,57 @@ func TestStuff(t *testing.T) {
 
 }
 
+func TestValidBranching(t *testing.T) {
+
+    trie := NewTrie()
+    trie.AddEntry("shure asdf", "7")
+    trie.AddEntry("shure qwer", "8")
+    trie.AddEntry("shurtrax max-pax", "9")
+    trie.AddEntry("shura no toki", "10")
+    trie.AddEntry("shure", "6")
+
+    val, validPath := trie.GetEntry("shure")
+    if val.(string) != "6" {
+        t.Errorf("Unable to retrieve shure 6")
+    }
+    if validPath != true {
+        t.Errorf("Valid subpath not identified")
+    }
+
+    val, validPath = trie.GetEntry("shure asdf")
+    if val.(string) != "7" {
+        t.Errorf("Unable to retrieve shure 7")
+    }
+    if validPath != true {
+        t.Errorf("Valid subpath not identified")
+    }
+
+    val, validPath = trie.GetEntry("shure qwer")
+    if val.(string) != "8" {
+        t.Errorf("Unable to retrieve shure 8")
+    }
+    if validPath != true {
+        t.Errorf("Valid subpath not identified")
+    }
+
+    val, validPath = trie.GetEntry("shurtrax max-pax")
+    if val.(string) != "9" {
+        t.Errorf("Unable to retrieve shure 9")
+    }
+    if validPath != true {
+        t.Errorf("Valid subpath not identified")
+    }
+
+    val, validPath = trie.GetEntry("shura no toki")
+    if val.(string) != "10" {
+        t.Errorf("Unable to retrieve shure 10")
+    }
+    if validPath != true {
+        t.Errorf("Valid subpath not identified")
+    }
+
+}
+
 func TestExteme(t *testing.T) {
     trie := NewTrie()
 

@@ -92,7 +92,7 @@ func (this *Trie) AddToBranch(t *branch, remEntry []byte, value interface{}) {
     shortcut := t.shortcut
 
     // are we on the right branch yet?
-    if len(remEntry) == 0 {
+    if len(remEntry) == 0 && len(shortcut) == 0 {
         // we are here, set it and forget it
         t.value = value
         return
